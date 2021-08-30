@@ -8,5 +8,5 @@ module.exports = {
 
   secondary: '#0099ff',
   secondaryLight: '#72c2f7',
-  secondaryDark: '#bbe1fa',
+  secondaryDark: '#005e9c',
 };
