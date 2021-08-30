@@ -95,7 +95,7 @@ const parsePost = author => postFromGraphql => {
 
 const MorePosts = ({ username, name, number }) => (
   <Card
-    onClick={() => window.open(`${MEDIUM_URL}/${username}/`, '_blank')}
+    onClick={() => window.open('https://sinakakhki.medium.com/')}
     p={4}
   >
     <Flex
