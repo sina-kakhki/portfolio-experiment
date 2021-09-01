@@ -114,7 +114,7 @@ const Project = ({
   publishedDate,
   logo,
 }) => (
-    <Card p={0} onClick={() => window.open(projectUrl, '_blank')}>
+    <Card p={0} onClick={() => window.open(projectUrl, repositoryUrl)}>
       <Flex style={{ height: CARD_HEIGHT }}>
         <TextContainer>
           <span>
