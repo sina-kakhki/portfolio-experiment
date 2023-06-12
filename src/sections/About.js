@@ -47,7 +47,7 @@ const About = () => (
     <StaticQuery
       query={graphql`
         query AboutMeQuery {
-          contentfulAbout {
+          About {
             aboutMe {
               childMarkdownRemark {
                 rawMarkdownBody
@@ -63,7 +63,7 @@ const About = () => (
         }
       `}
       render={data => {
-        const { aboutMe, profile } = data.contentfulAbout;
+        const { aboutMe, profile } = data.About;
         return (
           <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
             <Box width={[1, 1, 4 / 6]} px={[1, 2, 4]}>

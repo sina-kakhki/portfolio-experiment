@@ -11,8 +11,6 @@ import Triangle from '../components/Triangle';
 import ImageSubtitle from '../components/ImageSubtitle';
 import Hide from '../components/Hide';
 
-
-
 const Background = () => (
   <div>
     <Triangle
@@ -114,53 +112,53 @@ const Project = ({
   publishedDate,
   logo,
 }) => (
-    <Card p={0} onClick={() => window.open(repositoryUrl, projectUrl)}>
-      <Flex style={{ height: CARD_HEIGHT }}>
-        <TextContainer>
-          <span>
-            <Title my={2} pb={1}>
-              {name}
-            </Title>
-          </span>
-          <Text width={[1]} style={{ overflow: 'auto' }}>
-            {description}
-          </Text>
-        </TextContainer>
+  <Card p={0} onClick={() => window.open(repositoryUrl, projectUrl)}>
+    <Flex style={{ height: CARD_HEIGHT }}>
+      <TextContainer>
+        <span>
+          <Title my={2} pb={1}>
+            {name}
+          </Title>
+        </span>
+        <Text width={[1]} style={{ overflow: 'auto' }}>
+          {description}
+        </Text>
+      </TextContainer>
 
-        <ImageContainer>
-          <ProjectImage src={logo.image.src} alt={logo.title} />
-          <ProjectTag>
-            <Flex
-              style={{
-                float: 'right',
-              }}
-            >
-              <Box mx={1} fontSize={5}>
-                <SocialLink
-                  name="Check repository"
-                  fontAwesomeIcon="github"
-                  url={repositoryUrl}
-                />
-              </Box>
-              <Box mx={1} fontSize={5}>
-                <SocialLink
-                  name="See project"
-                  fontAwesomeIcon="globe"
-                  url={projectUrl}
-                />
-              </Box>
-            </Flex>
-            <ImageSubtitle bg="primary" color="white" y="bottom" x="right" round>
-              {type}
-            </ImageSubtitle>
-            <Hide query={MEDIA_QUERY_SMALL}>
-              <ImageSubtitle bg="backgroundDark">{publishedDate}</ImageSubtitle>
-            </Hide>
-          </ProjectTag>
-        </ImageContainer>
-      </Flex>
-    </Card>
-  );
+      <ImageContainer>
+        <ProjectImage src={logo.image.src} alt={logo.title} />
+        <ProjectTag>
+          <Flex
+            style={{
+              float: 'right',
+            }}
+          >
+            <Box mx={1} fontSize={5}>
+              <SocialLink
+                name="Check repository"
+                fontAwesomeIcon="github"
+                url={repositoryUrl}
+              />
+            </Box>
+            <Box mx={1} fontSize={5}>
+              <SocialLink
+                name="See project"
+                fontAwesomeIcon="globe"
+                url={projectUrl}
+              />
+            </Box>
+          </Flex>
+          <ImageSubtitle bg="primary" color="white" y="bottom" x="right" round>
+            {type}
+          </ImageSubtitle>
+          <Hide query={MEDIA_QUERY_SMALL}>
+            <ImageSubtitle bg="backgroundDark">{publishedDate}</ImageSubtitle>
+          </Hide>
+        </ProjectTag>
+      </ImageContainer>
+    </Flex>
+  </Card>
+);
 
 Project.propTypes = {
   name: PropTypes.string.isRequired,
@@ -183,7 +181,7 @@ const Projects = () => (
     <StaticQuery
       query={graphql`
         query ProjectsQuery {
-          contentfulAbout {
+          About {
             projects {
               id
               name
@@ -202,24 +200,17 @@ const Projects = () => (
           }
         }
       `}
-
-      render={
-
-
-        ({ contentfulAbout }) => (
-          <CardContainer minWidth="350px">
-            {contentfulAbout.projects.map((p, i) => (
-              <Fade bottom delay={i * 200} key={p.id}>
-                <Project {...p} />
-              </Fade>
-            ))}
-
-          </CardContainer>
-        )}
+      render={({ About }) => (
+        <CardContainer minWidth="350px">
+          {About.projects.map((p, i) => (
+            <Fade bottom delay={i * 200} key={p.id}>
+              <Project {...p} />
+            </Fade>
+          ))}
+        </CardContainer>
+      )}
     />
   </Section.Container>
-
-
 );
 
 export default Projects;

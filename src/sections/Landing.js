@@ -46,7 +46,7 @@ const LandingPage = () => (
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
-          contentfulAbout {
+          About {
             name
             roles
             socialLinks {
@@ -63,8 +63,8 @@ const LandingPage = () => (
           }
         }
       `}
-      render={({ contentfulAbout, site }) => {
-        const { name, socialLinks, roles } = contentfulAbout;
+      render={({ About, site }) => {
+        const { name, socialLinks, roles } = About;
         const { deterministicBehaviour } = site.siteMetadata;
 
         return (
